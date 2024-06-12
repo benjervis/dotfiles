@@ -1,10 +1,4 @@
-atlassian/atlas
-barn
-configstore
-envman
-exercism/user.json
-gh
-iterm2
-raycast
-zed
-pip
+*
+!fish/
+!nvim/
+!tmux/
