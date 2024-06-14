@@ -48,14 +48,21 @@ return {
         "<Plug>SidewaysArgumentAppendLast",
         desc = "Sideways append argument last",
       },
+      {
+        "aa",
+        "<Plug>SidewaysArgumentTextobjA",
+        mode = { "o", "x" },
+      },
+      {
+        "ia",
+        "<Plug>SidewaysArgumentTextobjI",
+        mode = { "o", "x" },
+      },
     },
   },
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      -- disable the keymap to grep files
-      -- { "<leader>/", false },
-      -- change a keymap
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
       { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent (all)" },
       {
@@ -201,5 +208,13 @@ return {
     config = function()
       require("search-replace").setup()
     end,
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        ["<leader>S"] = { name = "+Sideways" },
+      },
+    },
   },
 }
