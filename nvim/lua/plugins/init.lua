@@ -2,13 +2,13 @@ return {
   "jeffkreeftmeijer/vim-numbertoggle",
   "sindrets/diffview.nvim",
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
+    "nvim-spectre",
+    opts = { default = { replace = { cmd = "oxi" } } },
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
   {
     "olimorris/onedarkpro.nvim",
@@ -99,14 +99,6 @@ return {
         end,
         desc = "Find files sibling or descendant to current",
       },
-      -- add a keymap to browse plugin files
-      -- {
-      --   "<leader>fp",
-      --   function()
-      --     require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
-      --   end,
-      --   desc = "Find Plugin File",
-      -- },
     },
   },
   {
