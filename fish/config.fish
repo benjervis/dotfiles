@@ -8,7 +8,9 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-zoxide init fish --cmd cd | source
+if test -n "$(which zoxide)"
+    zoxide init fish --cmd cd | source
+end
 
 function current_git_branch
     git symbolic-ref --short HEAD
