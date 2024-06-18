@@ -1,6 +1,12 @@
 function fish_prompt
+    if test "$(uname)" = Darwin
+        set bg_color green
+    else
+        set bg_color brmagenta
+    end
+
     set formatted_pwd (string join '' -- \
-        (set_color --background green) \
+        (set_color --background $bg_color) \
         (set_color black) \
         " " \
         (prompt_pwd --full-length-dirs 2) \
