@@ -63,6 +63,8 @@ alias parcel-link="/Users/bjervis/github/parcel/packages/dev/parcel-link/bin.js"
 alias parcel-query="/Users/bjervis/github/packages/dev/query/src/bin.js"
 alias upgrade-parcel="GH_TOKEN=(gh auth token) yarn dev upgrade-parcel"
 
+alias lg="lazygit"
+
 # git commands
 alias gs="git status -uno"
 alias gc="git commit -m"
