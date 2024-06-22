@@ -75,6 +75,16 @@ return {
       {
         "<leader>fp",
         function()
+          require("telescope.builtin").find_files({
+            cwd = vim.fn.fnamemodify(vim.fn.finddir(".git", ".;"), ":p:h:h"),
+            search_file = "package.json",
+          })
+        end,
+        desc = "Find packages (git-files)",
+      },
+      {
+        "<leader>fP",
+        function()
           require("telescope.builtin").find_files({ search_file = "package.json" })
         end,
         desc = "Find packages",
@@ -95,6 +105,7 @@ return {
         function()
           require("telescope.builtin").find_files({
             search_dirs = { vim.fn.expand("%:p:h") },
+            path_display = { "smart" },
           })
         end,
         desc = "Find files sibling or descendant to current",
