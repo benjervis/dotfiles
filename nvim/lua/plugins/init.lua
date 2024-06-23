@@ -12,7 +12,12 @@ return {
   },
   {
     "olimorris/onedarkpro.nvim",
-    priority = 1000, -- Ensure it loads first
+    priority = 1000,
+    opts = {
+      highlights = {
+        PMenuSel = { bg = "#222222" },
+      },
+    },
   },
   { "tpope/vim-surround", lazy = false },
   {
