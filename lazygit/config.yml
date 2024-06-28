@@ -3,6 +3,15 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
   fetchAll: false
-nerdFontsVersion: "3"
+nerdFontsVersion: 3
 showFileIcons: true
-showDivergenceFromBaseBranch: "onlyArrow"
+showDivergenceFromBaseBranch: onlyArrow
+os:
+  editPreset: nvim
+
+customCommands:
+  - key: p
+    # command: "git fetch origin {{.SelectedLocalBranch}} --prune --prune-tags"
+    command: 'echo "{{.CheckedOutBranch.Name}}"'
+    context: global
+    description: Fetch and update branch
