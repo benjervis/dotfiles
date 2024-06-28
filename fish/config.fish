@@ -70,3 +70,4 @@ alias gs="git status -uno"
 alias gc="git commit -m"
 
 fish_add_path -gP /usr/local/go/bin
+fish_add_path -gP ~/.local/bin
