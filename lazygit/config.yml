@@ -11,6 +11,6 @@ os:
 
 customCommands:
   - key: p
-    command: "git fetch origin {{.CheckedOutBranch.Name}} --prune --prune-tags"
+    command: "git fetch origin {{.CheckedOutBranch.Name}} --prune --prune-tags && git rebase origin/{{.CheckedOutBranch.Name}} {{.CheckedOutBranch.Name}}"
     context: global
     description: Fetch and update branch
