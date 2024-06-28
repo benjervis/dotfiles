@@ -50,6 +50,7 @@ end
 
 
 set -gx EDITOR /opt/homebrew/bin/nvim
+set -gx XDG_CONFIG_HOME ~/.config
 
 abbr -a edr --set-cursor -- "exercism download --track=rust --exercise=%"
 
