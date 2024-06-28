@@ -2,4 +2,7 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  fetchAll: false
 nerdFontsVersion: "3"
+showFileIcons: true
+showDivergenceFromBaseBranch: "onlyArrow"
