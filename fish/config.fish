@@ -51,6 +51,7 @@ end
 
 set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
+set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
 
 abbr -a edr --set-cursor -- "exercism download --track=rust --exercise=%"
 

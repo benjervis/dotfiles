@@ -10,6 +10,8 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
+  { "junegunn/fzf", build = "./install --all" },
+  { "junegunn/fzf.vim" },
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
@@ -69,18 +71,18 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent (all)" },
+      { "<leader>fR", LazyVim.pick("oldfiles"), desc = "Recent (all)" },
       {
         "<leader>fj",
         function()
-          require("telescope.builtin").find_files({ search_dirs = { "build-tools", "dev-tooling" } })
+          LazyVim.pick("find_files", { search_dirs = { "build-tools", "dev-tooling" } })
         end,
         desc = "Find Jira tools",
       },
       {
         "<leader>fp",
         function()
-          require("telescope.builtin").find_files({
+          LazyVim.pick("find_files", {
             cwd = vim.fn.fnamemodify(vim.fn.finddir(".git", ".;"), ":p:h:h"),
             search_file = "package.json",
           })
@@ -90,14 +92,14 @@ return {
       {
         "<leader>fP",
         function()
-          require("telescope.builtin").find_files({ search_file = "package.json" })
+          LazyVim.pick("find_files", { search_file = "package.json" })
         end,
         desc = "Find packages",
       },
       {
         "<leader>fn",
         function()
-          require("telescope.builtin").find_files({
+          LazyVim.pick("find_files", {
             no_ignore = true,
             search_dirs = { "node_modules" },
             search_file = "package.json",
@@ -108,7 +110,7 @@ return {
       {
         "<leader>fh",
         function()
-          require("telescope.builtin").find_files({
+          LazyVim.pick("find_files", {
             search_dirs = { vim.fn.expand("%:p:h") },
             path_display = { "smart" },
           })
