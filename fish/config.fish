@@ -2,7 +2,7 @@
 # pyenv init - | source
 
 # pnpm
-set -gx PNPM_HOME /Users/bjervis/Library/pnpm
+set -gx PNPM_HOME ~/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
     fish_add_path -gP $PNPM_HOME
 end
@@ -61,8 +61,8 @@ fish_add_path -gP "~/.yarn/bin"
 alias reload_fish="source ~/.config/fish/config.fish"
 
 alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-progress"
-alias parcel-link="/Users/bjervis/github/parcel/packages/dev/parcel-link/bin.js"
-alias parcel-query="/Users/bjervis/github/packages/dev/query/src/bin.js"
+alias parcel-link="~/github/parcel/packages/dev/parcel-link/bin.js"
+alias parcel-query="~/github/packages/dev/query/src/bin.js"
 alias upgrade-parcel="GH_TOKEN=(gh auth token) yarn dev upgrade-parcel"
 
 alias lg="lazygit"
@@ -73,3 +73,4 @@ alias gc="git commit -m"
 
 fish_add_path -gP /usr/local/go/bin
 fish_add_path -gP ~/.local/bin
+
