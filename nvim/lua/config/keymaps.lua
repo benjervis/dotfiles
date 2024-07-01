@@ -3,3 +3,6 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<leader>cv", ":lua=")
+vim.keymap.set("n", "<leader>gg", function()
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = { width = 1, height = 0.95 } })
+end, { desc = "Lazygit (Root Dir)" })
