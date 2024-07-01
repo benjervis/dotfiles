@@ -1,0 +1,37 @@
+[user]
+  email = ben@jervis.net.au
+  name = Ben Jervis
+
+[core]
+  excludesfile = ~/.gitignore_global
+  pager = delta
+
+[diff]
+  colorMoved = default
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+
+[trace2]
+  eventTarget = af_unix:~/.gittrace/trace.sock
+  eventBrief = true
+  eventNesting = 1
+  configparams = custom.metacommands
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+[delta]
+  dark = true
+  navigate = true
+  line-numbers = true
+  syntax-theme = OneHalfDark
+  hyperlinks = true
+  diff-so-fancy = true
+  wrap-max-lines = 0
