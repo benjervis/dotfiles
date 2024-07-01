@@ -20,7 +20,7 @@ customCommands:
       && git rebase origin/{{$branch}} {{$branch}}
     context: global
     description: Fetch and update current branch
-    showOutput: true
+    loadingText: Updating checked out branch
   - key: p
     command: >-
       {{$branch := .SelectedLocalBranch.Name}}
@@ -28,4 +28,4 @@ customCommands:
       && git rebase origin/{{$branch}} {{$branch}}
     context: localBranches
     description: Fetch and update branch
-    showOutput: true
+    loadingText: Updating selected branch
