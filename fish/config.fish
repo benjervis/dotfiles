@@ -43,6 +43,7 @@ end
 set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
+set -gx HOMEBREW_NO_ENV_HINTS true
 
 # Add the location for globally installed yarn binaries
 fish_add_path -gP "~/.yarn/bin"
