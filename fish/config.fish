@@ -40,15 +40,6 @@ function gu
     update_branch (current_git_branch)
 end
 
-function nt
-    tmux split-pane -h
-    tmux select-pane -t:.0
-    tmux set main-pane-width 67%
-    tmux select-layout main-vertical
-    nvim
-end
-
-
 set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
