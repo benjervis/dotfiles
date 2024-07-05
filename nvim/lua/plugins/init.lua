@@ -81,40 +81,32 @@ return {
       },
       {
         "<leader>fp",
-        function()
-          LazyVim.pick("find_files", {
-            cwd = vim.fn.fnamemodify(vim.fn.finddir(".git", ".;"), ":p:h:h"),
-            search_file = "package.json",
-          })
-        end,
+        LazyVim.pick("find_files", {
+          cwd = LazyVim.root.git(),
+          search_file = "package.json",
+        }),
         desc = "Find packages (git-files)",
       },
       {
         "<leader>fP",
-        function()
-          LazyVim.pick("find_files", { search_file = "package.json" })
-        end,
+        LazyVim.pick("find_files", { search_file = "package.json" }),
         desc = "Find packages",
       },
       {
         "<leader>fn",
-        function()
-          LazyVim.pick("find_files", {
-            no_ignore = true,
-            search_dirs = { "node_modules" },
-            search_file = "package.json",
-          })
-        end,
+        LazyVim.pick("find_files", {
+          no_ignore = true,
+          search_dirs = { "node_modules" },
+          search_file = "package.json",
+        }),
         desc = "Find node_module",
       },
       {
         "<leader>fh",
-        function()
-          LazyVim.pick("find_files", {
-            search_dirs = { vim.fn.expand("%:p:h") },
-            path_display = { "smart" },
-          })
-        end,
+        LazyVim.pick("find_files", {
+          search_dirs = { vim.fn.expand("%:p:h") },
+          path_display = { "smart" },
+        }),
         desc = "Find files sibling or descendant to current",
       },
     },
