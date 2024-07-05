@@ -10,7 +10,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  { "junegunn/fzf", build = "./install --all" },
+  { "junegunn/fzf", build = "./install --all --xdg --no-bash --no-zsh" },
   { "junegunn/fzf.vim" },
   {
     "olimorris/onedarkpro.nvim",
