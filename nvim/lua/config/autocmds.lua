@@ -31,3 +31,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Disable single quote autopairs in Rust",
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.fish",
+  command = "silent! %s/\\v^(\\n)\\n+/\\1/g",
+  desc = "Enforce single linebreaks",
+})
