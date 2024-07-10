@@ -13,6 +13,32 @@ return {
   { "junegunn/fzf", build = "./install --all --xdg --no-bash --no-zsh" },
   { "junegunn/fzf.vim" },
   {
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader><space>", LazyVim.pick("files"), desc = "Find files - Git" },
+      {
+        "<leader>ff",
+        function()
+          LazyVim.pick("files", { cwd = LazyVim.root.detectors.lsp(0)[1] })()
+        end,
+        desc = "Find files - LSP",
+      },
+      { "<leader>fF", LazyVim.pick("files", { cwd = LazyVim.root.cwd() }), desc = "Find files - CWD" },
+    },
+    opts = { "fzf-native", {} },
+    config = function()
+      local actions = require("fzf-lua.actions")
+      return {
+        grep = {
+          actions = {
+            ["ctrl+r"] = { actions.toggle_ignore },
+            ["ctrl+h"] = { actions.toggle_hidden },
+          },
+        },
+      }
+    end,
+  },
+  {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
     opts = {
