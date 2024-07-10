@@ -3,3 +3,5 @@
 -- Add any additional options here
 vim.opt.scrolloff = 10
 vim.g.lazyvim_picker = "fzf"
+
+vim.g.root_spec = { { ".git", "lua" }, "lsp", "cwd" }
