@@ -32,20 +32,50 @@ return {
         end,
         desc = "Find node_modules",
       },
+      {
+        "<leader>fp",
+        function()
+          local cmd_string = string.format(
+            'rg \z
+              \'"name": "(.+)"\' \z
+              -g "package.json" \z
+              -r \'$1\' \z
+              %s \z
+              --no-heading \z
+              --no-line-number \z
+              --trim \z
+              --max-count=1',
+            LazyVim.root.git()
+          )
+
+          require("fzf-lua").fzf_exec(cmd_string, {
+            fzf_opts = { ["--delimiter"] = ":", ["--with-nth"] = 2 },
+            fn_transform = function(input)
+              return string.sub(input, 1, -2)
+            end,
+            actions = {
+              ["default"] = function(selection, opts)
+                local package_path = string.gmatch(selection[1], "(.+):(.+)")()
+                require("fzf-lua.actions").file_switch_or_edit({ package_path }, opts)
+              end,
+            },
+          })
+        end,
+        desc = "Productivity++",
+      },
     },
-    opts = { "fzf-native" },
     config = function()
       local actions = require("fzf-lua.actions")
       return {
         grep = {
           actions = {
-            ["ctrl+r"] = { actions.toggle_ignore },
-            ["ctrl+h"] = { actions.toggle_hidden },
+            ["ctrl+r"] = actions.toggle_ignore,
+            ["ctrl+h"] = actions.toggle_hidden,
           },
         },
         files = {
           actions = {
-            ["ctrl+h"] = { actions.toggle_hidden },
+            ["ctrl+h"] = actions.toggle_hidden,
           },
         },
       }
@@ -108,47 +138,7 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "<leader>fR", LazyVim.pick("oldfiles"), desc = "Recent (all)" },
-      {
-        "<leader>fj",
-        function()
-          LazyVim.pick("find_files", { search_dirs = { "build-tools", "dev-tooling" } })
-        end,
-        desc = "Find Jira tools",
-      },
-      {
-        "<leader>fp",
-        LazyVim.pick("find_files", {
-          cwd = LazyVim.root.git(),
-          search_file = "package.json",
-        }),
-        desc = "Find packages (git-files)",
-      },
-      {
-        "<leader>fP",
-        LazyVim.pick("find_files", { search_file = "package.json" }),
-        desc = "Find packages",
-      },
-      {
-        "<leader>fn",
-        LazyVim.pick("find_files", {
-          no_ignore = true,
-          search_dirs = { "node_modules" },
-          search_file = "package.json",
-        }),
-        desc = "Find node_module",
-      },
-      {
-        "<leader>fh",
-        LazyVim.pick("find_files", {
-          search_dirs = { vim.fn.expand("%:p:h") },
-          path_display = { "smart" },
-        }),
-        desc = "Find files sibling or descendant to current",
-      },
-    },
+    enabled = false,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
