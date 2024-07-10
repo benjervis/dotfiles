@@ -141,24 +141,22 @@ return {
     enabled = false,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      close_if_last_window = true,
-      event_handlers = {
-        {
-          event = "file_opened",
-          handler = function()
-            require("neo-tree.command").execute({ action = "close" })
-          end,
+    "ms-jpq/chadtree",
+    branch = "chad",
+    build = "python3 -m chadtree deps",
+    init = function()
+      vim.api.nvim_set_var("chadtree_settings", {
+        ["theme.text_colour_set"] = "nerdtree_syntax_dark",
+        view = {
+          width = 25,
+          window_options = {
+            number = true,
+          },
         },
-      },
-    },
+      })
+    end,
     keys = {
-      {
-        "<leader>E",
-        "<cmd>Neotree %:p:h<CR>",
-        desc = "Open file explorer (current dir)",
-      },
+      { "<leader>e", "<cmd>CHADopen --version-ctl<CR>", desc = "Open file tree" },
     },
   },
   -- Use <tab> for completion and snippets (supertab)
@@ -233,12 +231,6 @@ return {
         desc = "Tmux navigate right",
       },
     },
-  },
-  {
-    "roobert/search-replace.nvim",
-    config = function()
-      require("search-replace").setup()
-    end,
   },
   {
     "folke/which-key.nvim",
