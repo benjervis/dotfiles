@@ -24,14 +24,27 @@ return {
         desc = "Find files - LSP",
       },
       { "<leader>fF", LazyVim.pick("files", { cwd = LazyVim.root.cwd() }), desc = "Find files - CWD" },
+      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = LazyVim.root.git() }), desc = "Recent files" },
+      {
+        "<leader>fn",
+        function()
+          LazyVim.pick("files", { cwd = vim.fs.joinpath(vim.g.workspace_root(), "node_modules") })()
+        end,
+        desc = "Find node_modules",
+      },
     },
-    opts = { "fzf-native", {} },
+    opts = { "fzf-native" },
     config = function()
       local actions = require("fzf-lua.actions")
       return {
         grep = {
           actions = {
             ["ctrl+r"] = { actions.toggle_ignore },
+            ["ctrl+h"] = { actions.toggle_hidden },
+          },
+        },
+        files = {
+          actions = {
             ["ctrl+h"] = { actions.toggle_hidden },
           },
         },
