@@ -15,7 +15,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     keys = {
-      { "<leader><space>", LazyVim.pick("files"), desc = "Find files - Git" },
+      { "<leader><space>", LazyVim.pick("files", { cwd = LazyVim.root.git() }), desc = "Find files - Git" },
       {
         "<leader>ff",
         function()
