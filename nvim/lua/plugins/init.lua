@@ -204,6 +204,31 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      ---@param source cmp.SourceConfig
+      opts.sources = vim.tbl_filter(function(source)
+        return source.name ~= "snippets"
+      end, opts.sources)
+
+      opts.enabled = function()
+        -- disable completion in comments
+        local context = require("cmp.config.context")
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == "c" then
+          return true
+        else
+          return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+        end
+      end
+
+      opts.window = {
+        completion = {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          col_offset = -3,
+          side_padding = 0,
+        },
+        documentation = cmp.config.window.bordered(),
+      }
     end,
   },
   {
