@@ -55,6 +55,7 @@ alias parcel-link="~/github/parcel/packages/dev/parcel-link/bin.js"
 alias parcel-unlink="~/github/parcel/packages/dev/parcel-link/bin.js unlink"
 alias parcel-query="~/github/packages/dev/query/src/bin.js"
 alias upgrade-parcel="GH_TOKEN=(gh auth token) yarn dev upgrade-parcel"
+alias afm-upgrade-parcel="~/atlassian/atlassian-frontend-monorepo/afm-tools/src/packages/upgrade-parcel/index.ts"
 
 alias lg="lazygit"
 
