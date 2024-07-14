@@ -145,10 +145,26 @@ return {
         end, { "i", "s" }),
       })
 
-      ---@param source cmp.SourceConfig
-      opts.sources = vim.tbl_filter(function(source)
-        return source.name ~= "snippets"
-      end, opts.sources)
+      opts.sources = vim.tbl_map(
+        ---@param source cmp.SourceConfig
+        function(source)
+          if source.name ~= "nvim_lsp" then
+            return source
+          end
+
+          ---@param entry cmp.Entry
+          source.entry_filter = function(entry, _)
+            -- vim.print("entry", entry)
+            return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Snippet
+          end
+
+          return source
+        end,
+        ---@param source cmp.SourceConfig
+        vim.tbl_filter(function(source)
+          return source.name ~= "snippets"
+        end, opts.sources)
+      )
 
       opts.enabled = function()
         -- disable completion in comments
