@@ -1,7 +1,6 @@
 local fzf_lua = require("fzf-lua")
 local actions = require("fzf-lua.actions")
 local native_profile = require("fzf-lua.profiles.fzf-native")
-local root_selectors = require("config.root_selectors")
 local pickers = require("config.pickers")
 
 return {
@@ -13,9 +12,10 @@ return {
       { "<leader><space>", pickers.pick_files("workspace"), desc = "Find files - Workspace" },
       { "<leader>ff", pickers.pick_files("lsp"), desc = "Find files - LSP" },
       { "<leader>fF", pickers.pick_files("git"), desc = "Find files - Repo" },
-      { "<leader>fr", pickers.pick_old_files("git"), desc = "Recent files" },
+      { "<leader>fr", pickers.pick_old_files("git"), desc = "Recent files - Repo" },
       { "<leader>fn", pickers.pick_node_modules("workspace"), desc = "Find node_modules" },
-      { "<leader>sg", LazyVim.pick("live_grep", { cwd = LazyVim.root.git() }), desc = "Grep - Repo" },
+      { "<leader>sg", pickers.pick_live_grep("workspace"), desc = "Grep - Workspace" },
+      { "<leader>sG", pickers.pick_live_grep("git"), desc = "Grep - Repo" },
       {
         "<leader>fp",
         function()
@@ -56,9 +56,6 @@ return {
           ["ctrl-h"] = actions.toggle_hidden,
           ["ctrl-i"] = actions.toggle_ignore,
         },
-      },
-      grep = {
-        cmd = "rg",
       },
     },
   },

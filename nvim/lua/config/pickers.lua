@@ -2,36 +2,29 @@ local root_selectors = require("config.root_selectors")
 
 local M = {}
 
----@param root RootType
-M.pick_files = function(root)
-  local selector = root_selectors[root]
-  local cwd = selector()
-
-  return LazyVim.pick("files", {
-    cwd = cwd,
-    winopts = { title = " Find files - " .. selector.label .. " " },
-  })
+---@param opts {command: string, title: string, cwd_suffix?: string}
+local function construct_picker(opts)
+  return function(root)
+    return function()
+      local selector = root_selectors[root]
+      LazyVim.pick(opts.command, {
+        cwd = vim.fs.joinpath(selector(), opts.cwd_suffix),
+        winopts = { title = " " .. opts.title .. " - " .. selector.label .. " " },
+      })()
+    end
+  end
 end
 
----@param root "workspace"
-M.pick_node_modules = function(root)
-  local selector = root_selectors[root]
+---@type fun(root: RootType)
+M.pick_files = construct_picker({ command = "files", title = "Find files" })
 
-  return LazyVim.pick("files", {
-    cwd = vim.fs.joinpath(selector(), "node_modules"),
-    winopts = { title = " Find node_modules - " .. selector.label .. " " },
-  })
-end
+---@type fun(root: "workspace")
+M.pick_node_modules = construct_picker({ command = "files", title = "Find node_modules", cwd_suffix = "node_modules" })
 
----@param root RootType
-M.pick_old_files = function(root)
-  local selector = root_selectors[root]
-  local cwd = selector()
+---@type fun(root: RootType)
+M.pick_old_files = construct_picker({ command = "oldfiles", title = "Recent files" })
 
-  return LazyVim.pick("oldfiles", {
-    cwd = cwd,
-    winopts = { title = " Recent files - " .. selector.label .. " " },
-  })
-end
+---@type fun(root: RootType)
+M.pick_live_grep = construct_picker({ command = "live_grep", title = "Live Grep" })
 
 return M
