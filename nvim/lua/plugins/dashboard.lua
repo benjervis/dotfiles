@@ -1,3 +1,5 @@
+local pickers = require("config.pickers")
+
 return {
   "nvimdev/dashboard-nvim",
   opts = function()
@@ -23,10 +25,10 @@ return {
         header = vim.split(logo, "\n"),
       -- stylua: ignore
           center = {
-            { action = LazyVim.pick("files",        { cwd = LazyVim.root.git() }),                                        desc = " Find File",       icon = " ", key = "f" },
+            { action = pickers.pick_files("git"),                                                                         desc = " Find File",       icon = " ", key = "f" },
             { action = "ene | startinsert",                                                                               desc = " New File",        icon = " ", key = "n" },
-            { action = LazyVim.pick("oldfiles",     { cwd = LazyVim.root.git() }),                                        desc = " Recent Files",    icon = " ", key = "r" },
-            { action = LazyVim.pick("live_grep"),                                                                         desc = " Find Text",       icon = " ", key = "g" },
+            { action = pickers.pick_old_files("git"),                                                                     desc = " Recent Files",    icon = " ", key = "r" },
+            { action = LazyVim.pick("live_grep",    { cwd = LazyVim.root.git() }),                                        desc = " Find Text",       icon = " ", key = "g" },
             { action = 'lua require("persistence").load()',                                                               desc = " Restore Session", icon = " ", key = "s" },
             { action = function () LazyVim.lazygit( { cwd = LazyVim.root.git(), size = {width = 1, height=0.98} }) end,   desc = " Lazygit",         icon = " ", key = "G" },
             { action = "LazyExtras",                                                                                      desc = " Lazy Extras",     icon = " ", key = "x" },

@@ -1,6 +1,8 @@
 local wk = require("which-key")
 return {
+  "MunifTanjim/nui.nvim",
   "jeffkreeftmeijer/vim-numbertoggle",
+  "nvim-tree/nvim-web-devicons",
   "sindrets/diffview.nvim",
   {
     "nvim-spectre",
@@ -239,6 +241,35 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
+    },
+  },
+  {
+    "stevearc/dressing.nvim",
+    opts = {
+      select = {
+        get_config = function(opts)
+          local format_item_override = {
+            root_selector = function(action_tuple)
+              vim.print("Action Tuple", action_tuple)
+              return require("config.root_selectors").roots[action_tuple[2]].label
+            end,
+          }
+          if opts.kind == "root_selector" then
+            return {
+              format_item_override,
+              backend = "nui",
+              nui = {
+                relative = "editor",
+                max_width = 10,
+              },
+            }
+          else
+            return {
+              format_item_override,
+            }
+          end
+        end,
+      },
     },
   },
 }
