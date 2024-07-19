@@ -234,7 +234,7 @@ return {
       presets = {
         bottom_search = false, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
+        long_message_to_split = false, -- long messages will be sent to a split
         lsp_doc_border = true,
       },
     },
@@ -251,7 +251,7 @@ return {
           local format_item_override = {
             root_selector = function(action_tuple)
               vim.print("Action Tuple", action_tuple)
-              return require("config.root_selectors").roots[action_tuple[2]].label
+              return require("config.root_selectors")[action_tuple[2]].label
             end,
           }
           if opts.kind == "root_selector" then
