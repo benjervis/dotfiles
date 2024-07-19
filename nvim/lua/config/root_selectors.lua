@@ -4,6 +4,13 @@
 ---@type table<RootType, RootConfig>
 M = {}
 
+local workspace_root_spec = { "yarn.lock", "package-lock.json", "pnpm-lock.yaml", "bun.lockb" }
+
+local function workspace_root()
+  local pattern_results = LazyVim.root.detectors.pattern(0, workspace_root_spec)
+  return pattern_results[1]
+end
+
 ---@param root_object RootConfig
 local function make_callable(root_object)
   setmetatable(root_object, { __call = root_object.fn })
@@ -13,7 +20,7 @@ end
 ---@type RootConfig
 M.workspace = make_callable({
   label = "Workspace",
-  fn = vim.g.workspace_root,
+  fn = workspace_root,
 })
 
 ---@type RootConfig
