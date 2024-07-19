@@ -4,7 +4,7 @@
 ---@type table<RootType, RootConfig>
 M = {}
 
-local workspace_root_spec = { "yarn.lock", "package-lock.json", "pnpm-lock.yaml", "bun.lockb" }
+local workspace_root_spec = { "lua", "yarn.lock", "package-lock.json", "pnpm-lock.yaml", "bun.lockb" }
 
 local function workspace_root()
   local pattern_results = LazyVim.root.detectors.pattern(0, workspace_root_spec)
