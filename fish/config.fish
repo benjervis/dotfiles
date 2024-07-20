@@ -12,6 +12,10 @@ if test -n "$(which zoxide)"
     zoxide init fish --cmd cd | source
 end
 
+function is_parcel_lunk
+    return (exists-up ".parcel-link" ".git")
+end
+
 function current_git_branch
     git symbolic-ref --short HEAD
 end
