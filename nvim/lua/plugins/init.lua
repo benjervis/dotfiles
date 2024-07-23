@@ -23,6 +23,9 @@ return {
   },
   { "tpope/vim-surround", lazy = false },
   {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
   {
     "ms-jpq/chadtree",
