@@ -9,13 +9,13 @@ return {
   {
     "ibhagwan/fzf-lua",
     keys = {
-      { "<leader><space>", pickers.pick_files("workspace"), desc = "Find files - Workspace" },
-      { "<leader>ff", pickers.pick_files("lsp"), desc = "Find files - LSP" },
-      { "<leader>fF", pickers.pick_files("git"), desc = "Find files - Repo" },
+      { "<leader><space>", pickers.pick_files("git"), desc = "Find files - Repo" },
+      { "<leader>ff", pickers.pick_files("workspace"), desc = "Find files - Workspace" },
+      { "<leader>fF", pickers.pick_files("lsp"), desc = "Find files - LSP" },
       { "<leader>fr", pickers.pick_old_files("git"), desc = "Recent files - Repo" },
       { "<leader>fn", pickers.pick_node_modules("workspace"), desc = "Find node_modules" },
-      { "<leader>sg", pickers.pick_live_grep("workspace"), desc = "Grep - Workspace" },
-      { "<leader>sG", pickers.pick_live_grep("git"), desc = "Grep - Repo" },
+      { "<leader>sg", pickers.pick_live_grep("git"), desc = "Grep - Repo" },
+      { "<leader>sG", pickers.pick_live_grep("workspace"), desc = "Grep - Workspace" },
       {
         "<leader>fp",
         function()
@@ -51,6 +51,13 @@ return {
       },
     },
     opts = {
+      winopts = {
+        height = 0.99,
+        width = 0.99,
+        preview = {
+          horizontal = "right:40%",
+        },
+      },
       files = {
         actions = {
           ["ctrl-h"] = actions.toggle_hidden,
