@@ -31,7 +31,7 @@ function fish_prompt
           (set_color --background brblue) \
           (set_color --bold) \
           (set_color white) \
-          " PARCEL LINK " \
+          " LUNK " \
           (set_color normal)
         )
     end
@@ -41,5 +41,5 @@ function fish_prompt
 end
 
 function fish_right_prompt
-    echo ""
+    echo $(date "+%H:%M:%S")
 end
