@@ -59,6 +59,7 @@ return {
         },
       },
       files = {
+        git_icons = false,
         actions = {
           ["ctrl-h"] = actions.toggle_hidden,
           ["ctrl-i"] = actions.toggle_ignore,
