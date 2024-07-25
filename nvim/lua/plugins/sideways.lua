@@ -3,36 +3,44 @@ local wk = require("which-key")
 return {
   "AndrewRadev/sideways.vim",
   keys = function()
-    wk.add({ "<leader>S", group = "Sideways" })
+    wk.add({
+      "<leader>a",
+      group = "Sideways",
+      icon = {
+        icon = "󰞘",
+        color = "purple",
+        name = "sideways_arrows",
+      },
+    })
 
     return {
       {
-        "<leader>Sh",
+        "<leader>ah",
         "<cmd>SidewaysLeft<CR>",
         desc = "Sideways left",
       },
       {
-        "<leader>Sl",
+        "<leader>al",
         "<cmd>SidewaysRight<CR>",
         desc = "Sideways right",
       },
       {
-        "<leader>Si",
+        "<leader>ai",
         "<Plug>SidewaysArgumentInsertBefore",
         desc = "Sideways insert argument before",
       },
       {
-        "<leader>Sa",
+        "<leader>aa",
         "<Plug>SidewaysArgumentAppendAfter",
         desc = "Sideways append argument after",
       },
       {
-        "<leader>SI",
+        "<leader>aI",
         "<Plug>SidewaysArgumentInsertFirst",
         desc = "Sideways insert argument first",
       },
       {
-        "<leader>SA",
+        "<leader>aA",
         "<Plug>SidewaysArgumentAppendLast",
         desc = "Sideways append argument last",
       },
