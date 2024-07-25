@@ -41,7 +41,15 @@ function gum
 end
 
 function gu
-    update_branch (current_git_branch)
+    set branch_name $argv[1]
+
+    if test -z $branch_name
+        set branch_name (current_git_branch)
+    end
+
+    echo "Updating $branch_name..."
+
+    update_branch $branch_name
 end
 
 set -gx EDITOR /opt/homebrew/bin/nvim
