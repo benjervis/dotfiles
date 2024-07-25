@@ -68,6 +68,9 @@ alias parcel-unlink="~/github/parcel/packages/dev/parcel-link/bin.js unlink"
 alias parcel-query="~/github/packages/dev/query/src/bin.js"
 alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
 
+alias grm="git rebase master -Xours"
+
+alias n="nvim"
 alias lg="lazygit"
 
 # git commands
