@@ -11,9 +11,11 @@ vim.g.rustaceanvim = {
     default_settings = {
       ["rust-analyzer"] = {
         inlayHints = {
+          -- This is the actually useful one
+          closingBraceHints = { enable = true, minLines = 10 },
+          -- All the rest should be turned off
           bindingModeHints = { enable = false },
           chainingHints = { enable = false },
-          closingBraceHints = { enable = true, minLines = 10 },
           closureCaptureHints = { enable = false },
           closureReturnTypeHints = { enable = "never" },
           discriminantHints = { enable = "never" },
