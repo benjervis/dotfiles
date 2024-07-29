@@ -55,14 +55,23 @@ return {
         height = 0.99,
         width = 0.99,
         preview = {
-          horizontal = "right:40%",
+          horizontal = "right:60%",
         },
       },
       files = {
+        previewer = "bat",
         git_icons = false,
         actions = {
           ["ctrl-h"] = actions.toggle_hidden,
           ["ctrl-i"] = actions.toggle_ignore,
+        },
+      },
+      grep = {
+        git_icons = false,
+      },
+      previewers = {
+        bat = {
+          args = "--color=always --style=numbers,changes,header-filemodified,header-filename,grid",
         },
       },
     },
