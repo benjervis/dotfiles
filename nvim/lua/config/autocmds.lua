@@ -18,6 +18,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = ".parcelrc",
+  command = ":setfiletype json5",
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "rust",
   callback = function(args)
