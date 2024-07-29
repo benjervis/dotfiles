@@ -4,6 +4,14 @@ return {
   "nvim-tree/nvim-web-devicons",
   "sindrets/diffview.nvim",
   {
+    "petertriho/nvim-scrollbar",
+    opts = true,
+    init = function()
+      require("scrollbar.handlers.search").setup()
+    end,
+  },
+  { "kevinhwang91/nvim-hlslens" },
+  {
     "nvim-spectre",
     opts = { default = { replace = { cmd = "oxi" } } },
   },
