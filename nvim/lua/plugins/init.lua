@@ -43,7 +43,7 @@ return {
       vim.api.nvim_set_var("chadtree_settings", {
         ["theme.text_colour_set"] = "nerdtree_syntax_dark",
         view = {
-          width = 25,
+          width = 40,
           window_options = {
             number = true,
           },
