@@ -68,6 +68,7 @@ return {
       },
       grep = {
         git_icons = false,
+        rg_opts = [[ --glob '!yarn.lock' --glob '!licenses.json' --hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e ]],
       },
       previewers = {
         bat = {
