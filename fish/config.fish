@@ -52,6 +52,10 @@ function gu
     update_branch $branch_name
 end
 
+function stash_token
+    op read "op://Private/Stash Access Token/credential"
+end
+
 function git_checkout_remote
     set branch_name $argv[1]
     git fetch origin $branch_name --prune --prune-tags
