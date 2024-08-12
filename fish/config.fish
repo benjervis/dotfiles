@@ -75,7 +75,7 @@ alias reload_fish="source ~/.config/fish/config.fish"
 alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-progress"
 alias parcel-link="~/github/parcel/packages/dev/parcel-link/bin.js"
 alias parcel-unlink="~/github/parcel/packages/dev/parcel-link/bin.js unlink"
-alias parcel-query="~/github/packages/dev/query/src/bin.js"
+alias parcel-query="~/github/parcel/packages/dev/query/src/bin.js"
 alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
 
 alias grm="git rebase master -Xours"
