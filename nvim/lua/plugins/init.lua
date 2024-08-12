@@ -3,6 +3,7 @@ return {
   "jeffkreeftmeijer/vim-numbertoggle",
   "nvim-tree/nvim-web-devicons",
   "sindrets/diffview.nvim",
+  { "kevinhwang91/nvim-hlslens" },
   {
     "petertriho/nvim-scrollbar",
     opts = true,
@@ -10,7 +11,6 @@ return {
       require("scrollbar.handlers.search").setup()
     end,
   },
-  { "kevinhwang91/nvim-hlslens" },
   {
     "nvim-spectre",
     opts = { default = { replace = { cmd = "oxi" } } },
