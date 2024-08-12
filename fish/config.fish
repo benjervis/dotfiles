@@ -52,6 +52,12 @@ function gu
     update_branch $branch_name
 end
 
+function git_checkout_remote
+    set branch_name $argv[1]
+    git fetch origin $branch_name --prune --prune-tags
+    git checkout $branch_name
+end
+
 set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
