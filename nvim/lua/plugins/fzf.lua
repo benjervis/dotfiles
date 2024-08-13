@@ -11,7 +11,7 @@ return {
     keys = {
       { "<leader><space>", pickers.pick_files("git"), desc = "Find files - Repo" },
       { "<leader>ff", pickers.pick_files("workspace"), desc = "Find files - Workspace" },
-      { "<leader>fF", pickers.pick_files("lsp"), desc = "Find files - LSP" },
+      { "<leader>fF", pickers.pick_files("package"), desc = "Find files - Package" },
       { "<leader>fr", pickers.pick_old_files("git"), desc = "Recent files - Repo" },
       { "<leader>fn", pickers.pick_node_modules("workspace"), desc = "Find node_modules" },
       { "<leader>sg", pickers.pick_live_grep("git"), desc = "Grep - Repo" },
