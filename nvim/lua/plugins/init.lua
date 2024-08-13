@@ -109,6 +109,18 @@ return {
     },
   },
   {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters = {
+        prettier = {
+          condition = function(_, ctx)
+            return string.find(ctx.filename, "node_modules", 1, true) == nil
+          end,
+        },
+      },
+    },
+  },
+  {
     "stevearc/dressing.nvim",
     opts = {
       select = {
