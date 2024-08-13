@@ -1,5 +1,5 @@
 ---@alias RootConfig { label: string, fn: fun(): string}
----@alias RootType "workspace" | "git" | "lsp" | "cwd"
+---@alias RootType "workspace" | "git" | "package" | "cwd"
 
 ---@type table<RootType, RootConfig>
 M = {}
@@ -30,10 +30,11 @@ M.git = make_callable({
 })
 
 ---@type RootConfig
-M.lsp = make_callable({
-  label = "LSP",
+M.package = make_callable({
+  label = "Package",
   fn = function()
-    return LazyVim.root.detectors.lsp(0)[1]
+    local pattern_results = LazyVim.root.detectors.pattern(0, "package.json")
+    return pattern_results[1]
   end,
 })
 
