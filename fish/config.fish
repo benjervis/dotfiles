@@ -36,6 +36,15 @@ function update_branch
     end
 end
 
+function yarn_patch
+    set package_name $argv[1]
+
+    set patch_path $(yarn patch --json $package_name | jq --raw-output .path)
+
+    n $patch_path
+    yarn patch-commit -s $patch_path
+end
+
 function gum
     update_branch master jira-stable
 end
