@@ -31,7 +31,7 @@ function update_branch
 
     set new_branch (current_git_branch)
 
-    if test new_branch != current_branch
+    if test $new_branch != $current_branch
         git checkout $current_branch
     end
 end
