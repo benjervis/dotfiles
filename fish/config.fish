@@ -56,7 +56,7 @@ function gu
         set branch_name (current_git_branch)
     end
 
-    echo "Updating $branch_name..."
+    echo "Updating $(set_color yellow)$branch_name$(set_color normal)..."
 
     update_branch $branch_name
 end
