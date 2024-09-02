@@ -1,10 +1,14 @@
 local wk = require("which-key")
 local grug = require("grug-far").grug_far
 
-local path_yank = require("config.path-yank")
+local path_yank = require("config.path_yank")
 local roots = require("config.root_selectors")
 
-wk.add({ "<leader>cy", path_yank.copy_path, mode = { "n", "v" }, desc = "Copy current path" })
+wk.add({ "<leader>cy", group = "Copy file path" })
+wk.add({ "<leader>cyy", path_yank.copy_local_path, mode = { "n", "v" }, desc = "Copy current path (relative)" })
+wk.add({ "<leader>cya", path_yank.copy_absolute_local_path, mode = { "n", "v" }, desc = "Copy current path (absolute)" })
+wk.add({ "<leader>cyr", path_yank.copy_remote_path, mode = { "n", "v" }, desc = "Copy current path (as url)" })
+
 wk.add({ "<leader>cv", ":lua=", desc = "Lua Command" })
 
 wk.add({ "<leader>j", group = "Find and replace" })

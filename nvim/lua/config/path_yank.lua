@@ -52,7 +52,17 @@ local copy_to_clipboard = function(content)
   vim.fn.setreg("+", content)
 end
 
-M.copy_path = function()
+M.copy_local_path = function()
+  local file_path = get_buf_path()
+  copy_to_clipboard(file_path)
+end
+
+M.copy_absolute_local_path = function()
+  local absolute_path = get_buf_path({ type = "absolute" })
+  copy_to_clipboard(absolute_path)
+end
+
+M.copy_remote_path = function()
   local file_path = get_buf_path()
   local mode = vim.fn.mode()
 
@@ -84,13 +94,14 @@ M.copy_path = function()
 
   if mode == "v" or mode == "V" then
     local start_line, end_line = vim.fn.getpos("v")[2], vim.fn.getpos(".")[2]
-    url = url .. "#" .. remote.line_prefix .. start_line .. "-" .. remote.line_prefix .. end_line
-  else
-    local curr_line = vim.fn.getpos(".")[2]
-    url = url .. "#" .. remote.line_prefix .. curr_line
+    url = url .. "#" .. remote.line_prefix .. start_line
+    if start_line ~= end_line then
+      url = url .. "-" .. remote.line_prefix .. end_line
+    end
   end
 
   copy_to_clipboard(url)
+  vim.api.nvim_input("<Esc>")
 end
 
 return M
