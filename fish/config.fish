@@ -56,9 +56,21 @@ function gu
         set branch_name (current_git_branch)
     end
 
-    echo "Updating $(set_color yellow)$branch_name$(set_color normal)..."
+    echo "Updating $(set_yellow $branch_name)..."
 
     update_branch $branch_name
+end
+
+function rebase_onto
+    set branch_name $argv[1]
+
+    if test -z $branch_name
+        set branch_name master
+    end
+
+    echo -e "\nRebasing $(set_blue (current_git_branch)) onto $(set_yellow $branch_name)...\n"
+    gu $branch_name && git rebase $branch_name
+
 end
 
 function stash_token
