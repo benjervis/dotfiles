@@ -12,7 +12,7 @@ M = {}
 local remote_prefixes = {
   github = {
     url_template = "https://github.com/$ORG/$REPO/blob/$BRANCH/$FILE_PATH",
-    pattern = "git@github%.com:(.*)/(.*)%.git",
+    pattern = "git@github%.com:(.*)/(.*)%.?g?i?t?",
     line_prefix = "L",
   },
   stash = {
