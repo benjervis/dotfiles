@@ -13,7 +13,7 @@ if test -n "$(which zoxide)"
 end
 
 function is_parcel_lunk
-    return (exists-up ".parcel-link" ".git")
+    return (exists-up ".atlaspack-link" ".git")
 end
 
 function current_git_branch
@@ -56,7 +56,7 @@ function gu
         set branch_name (current_git_branch)
     end
 
-    echo "Updating $(set_yellow $branch_name)..."
+    echo "Updating $(colors yellow $branch_name)..."
 
     update_branch $branch_name
 end
@@ -68,7 +68,7 @@ function rebase_onto
         set branch_name master
     end
 
-    echo -e "\nRebasing $(set_blue (current_git_branch)) onto $(set_yellow $branch_name)...\n"
+    echo -e "\nRebasing $( colors blue (current_git_branch)) onto $(colors yellow $branch_name)...\n"
     gu $branch_name && git rebase $branch_name
 
 end
@@ -95,7 +95,9 @@ alias reload_fish="source ~/.config/fish/config.fish"
 
 alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-progress"
 alias parcel-link="~/github/parcel/packages/dev/parcel-link/bin.js"
-alias parcel-unlink="~/github/parcel/packages/dev/parcel-link/bin.js unlink"
+alias parcel-unlink="~/github/atlaspack/packages/dev/parcel-link/bin.js unlink"
+alias atlaspack-link="~/github/atlaspack/packages/dev/atlaspack-link/bin.js"
+alias atlaspack-unlink="~/github/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
 alias parcel-query="~/github/parcel/packages/dev/query/src/bin.js"
 alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
 
