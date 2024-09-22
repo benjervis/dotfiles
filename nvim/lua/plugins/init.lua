@@ -3,7 +3,7 @@ return {
   "jeffkreeftmeijer/vim-numbertoggle",
   "nvim-tree/nvim-web-devicons",
   "sindrets/diffview.nvim",
-  { "kevinhwang91/nvim-hlslens" },
+  "kevinhwang91/nvim-hlslens",
   {
     "petertriho/nvim-scrollbar",
     opts = true,
