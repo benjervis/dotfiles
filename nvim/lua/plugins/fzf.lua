@@ -21,7 +21,7 @@ return {
         function()
           local cmd_string = string.format(
             'rg \z
-            \'"name": "(.+)"\' \z
+            \'"name": "(.+)",\' \z
             -g "package.json" \z
             -r \'$1\' \z
             %s \z

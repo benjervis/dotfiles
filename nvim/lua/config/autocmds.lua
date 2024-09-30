@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client.name == "typescript-tools" and is_flowtype() then
       vim.lsp.stop_client(args.data.client_id, true)
     end
-    if client.name == "tsserver" then
+    if client.name == "tsserver" or client.name == "ts_ls" then
       vim.lsp.stop_client(args.data.client_id, true)
     end
   end,

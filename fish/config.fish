@@ -99,6 +99,7 @@ alias parcel-unlink="~/github/atlaspack/packages/dev/parcel-link/bin.js unlink"
 alias atlaspack-link="~/github/atlaspack/packages/dev/atlaspack-link/bin.js"
 alias atlaspack-unlink="~/github/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
 alias parcel-query="~/github/parcel/packages/dev/query/src/bin.js"
+alias atlaspack-query="~/github/atlaspack/packages/dev/query/src/bin.js"
 alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
 
 alias grm="git rebase master -Xours"
