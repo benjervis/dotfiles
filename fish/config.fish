@@ -45,10 +45,6 @@ function yarn_patch
     yarn patch-commit -s $patch_path
 end
 
-function gum
-    update_branch master jira-stable
-end
-
 function gu
     set branch_name $argv[1]
 
@@ -59,6 +55,16 @@ function gu
     echo "Updating $(colors yellow $branch_name)..."
 
     update_branch $branch_name
+end
+
+function default_branch
+    git rev-parse --abbrev-ref origin/HEAD | string replace origin/ ""
+end
+
+function gum
+    set default (default_branch)
+
+    gu $default && git rebase $default
 end
 
 function rebase_onto

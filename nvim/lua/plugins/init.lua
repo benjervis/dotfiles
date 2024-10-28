@@ -35,25 +35,25 @@ return {
     version = "^4", -- Recommended
     lazy = false, -- This plugin is already lazy
   },
-  {
-    "ms-jpq/chadtree",
-    branch = "chad",
-    build = "python3 -m chadtree deps",
-    init = function()
-      vim.api.nvim_set_var("chadtree_settings", {
-        ["theme.text_colour_set"] = "nerdtree_syntax_dark",
-        view = {
-          width = 40,
-          window_options = {
-            number = true,
-          },
-        },
-      })
-    end,
-    keys = {
-      { "<leader>e", "<cmd>CHADopen --version-ctl<CR>", desc = "Open file tree" },
-    },
-  },
+  -- {
+  --   "ms-jpq/chadtree",
+  --   branch = "chad",
+  --   build = "python3 -m chadtree deps",
+  --   init = function()
+  --     vim.api.nvim_set_var("chadtree_settings", {
+  --       ["theme.text_colour_set"] = "nerdtree_syntax_dark",
+  --       view = {
+  --         width = 40,
+  --         window_options = {
+  --           number = true,
+  --         },
+  --       },
+  --     })
+  --   end,
+  --   keys = {
+  --     { "<leader>e", "<cmd>CHADopen --version-ctl<CR>", desc = "Open file tree" },
+  --   },
+  -- },
   {
     "mg979/vim-visual-multi",
     init = function()
