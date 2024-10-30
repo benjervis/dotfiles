@@ -83,7 +83,7 @@ function stash_token
     op read "op://Private/Stash Access Token/credential"
 end
 
-function git_checkout_remote
+function gcr
     set branch_name $argv[1]
     git fetch origin $branch_name --prune --prune-tags
     git checkout $branch_name
@@ -109,6 +109,7 @@ alias aq="~/github/atlaspack/packages/dev/query/src/bin.js"
 alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
 
 alias grm="git rebase master -Xours"
+alias gcd="git checkout (default_branch)"
 
 alias n="nvim"
 alias lg="lazygit"
