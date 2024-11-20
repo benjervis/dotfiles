@@ -16,6 +16,7 @@ return {
       { "<leader>fn", pickers.pick_node_modules("workspace"), desc = "Find node_modules" },
       { "<leader>sg", pickers.pick_live_grep("git"), desc = "Grep - Repo" },
       { "<leader>sG", pickers.pick_live_grep("workspace"), desc = "Grep - Workspace" },
+      { "<leader>sP", pickers.pick_live_grep("package"), desc = "Grep - Package" },
       {
         "<leader>fp",
         function()
