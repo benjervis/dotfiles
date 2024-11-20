@@ -33,7 +33,7 @@ M.git = make_callable({
 M.package = make_callable({
   label = "Package",
   fn = function()
-    local pattern_results = LazyVim.root.detectors.pattern(0, "package.json")
+    local pattern_results = LazyVim.root.detectors.pattern(0, { "package.json", "Cargo.toml" })
     return pattern_results[1]
   end,
 })
