@@ -17,7 +17,7 @@ local remote_prefixes = {
   },
   stash = {
     url_template = "https://stash.atlassian.com/projects/$ORG/repos/$REPO/browse/$FILE_PATH?at=$BRANCH",
-    pattern = "git@bitbucket.-/(.-)/(.-)%.git",
+    pattern = "git@bitbucket.-:(.-)/(.-)%.git",
     line_prefix = "",
   },
 }
