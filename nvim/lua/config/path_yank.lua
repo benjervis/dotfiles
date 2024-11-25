@@ -24,12 +24,13 @@ local remote_prefixes = {
 
 ---@param opts? {type: '"relative"' | '"absolute"'}
 local get_buf_path = function(opts)
-  opts = opts or { type = "relative" }
+  local path_type = (opts and opts.type) or "relative"
 
   local path = vim.fn.expand("%:p")
 
-  if opts.type == "relative" then
-    path = string.gsub(path, root_selectors.git() .. "/?", "", 1)
+  if path_type == "relative" then
+    local sanitised_git_root = string.gsub(root_selectors.git() .. "/?", "-", "%%-")
+    path = string.gsub(path, sanitised_git_root, "", 1)
   end
 
   return path
