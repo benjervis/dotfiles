@@ -18,6 +18,13 @@ return {
       { "<leader>sG", pickers.pick_live_grep("workspace"), desc = "Grep - Workspace" },
       { "<leader>sP", pickers.pick_live_grep("package"), desc = "Grep - Package" },
       {
+        "<leader>sp",
+        function()
+          require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
+        end,
+        desc = "Replace in file",
+      },
+      {
         "<leader>fp",
         function()
           local cmd_string = string.format(
