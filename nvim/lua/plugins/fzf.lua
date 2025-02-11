@@ -40,20 +40,17 @@ return {
             LazyVim.root.git()
           )
 
-          fzf_lua.fzf_exec(
-            cmd_string,
-            vim.tbl_deep_extend("force", native_profile, {
-              fzf_opts = { ["--delimiter"] = ":", ["--with-nth"] = 2 },
-              actions = {
-                ["default"] = function(selection, opts)
-                  local input = selection[1]
-                  local split_point = string.find(input, ":", 0, true) or 0
-                  local file_path = string.sub(input, 0, split_point - 1)
-                  require("fzf-lua.actions").file_switch_or_edit({ file_path }, opts)
-                end,
-              },
-            })
-          )
+          fzf_lua.fzf_exec(cmd_string, {
+            fzf_opts = { ["--delimiter"] = ":", ["--with-nth"] = 2 },
+            actions = {
+              ["default"] = function(selection, opts)
+                local input = selection[1]
+                local split_point = string.find(input, ":", 0, true) or 0
+                local file_path = string.sub(input, 0, split_point - 1)
+                require("fzf-lua.actions").file_switch_or_edit({ file_path }, opts)
+              end,
+            },
+          })
         end,
         desc = "Find packages",
       },
