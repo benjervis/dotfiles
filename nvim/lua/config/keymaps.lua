@@ -8,6 +8,14 @@ wk.add({ "<leader>cy", group = "Copy file path" })
 wk.add({ "<leader>cyy", path_yank.copy_local_path, mode = { "n", "v" }, desc = "Copy current path (relative)" })
 wk.add({ "<leader>cya", path_yank.copy_absolute_local_path, mode = { "n", "v" }, desc = "Copy current path (absolute)" })
 wk.add({ "<leader>cyr", path_yank.copy_remote_path, mode = { "n", "v" }, desc = "Copy current path (as url)" })
+wk.add({
+  "<leader>cym",
+  function()
+    path_yank.copy_remote_path(true)
+  end,
+  mode = { "n", "v" },
+  desc = "Copy current path without branch (as url)",
+})
 
 wk.add({ "<leader>cv", ":lua=", desc = "Lua Command" })
 

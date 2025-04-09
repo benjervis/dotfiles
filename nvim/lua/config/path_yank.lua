@@ -13,12 +13,16 @@ local remote_prefixes = {
   github = {
     url_template = "https://github.com/$ORG/$REPO/blob/$BRANCH/$FILE_PATH",
     pattern = "git@github%.com:(.*)/(.*)%.?g?i?t?",
+    line_preamble = "",
     line_prefix = "L",
+    lines_separator = "-",
   },
   stash = {
-    url_template = "https://stash.atlassian.com/projects/$ORG/repos/$REPO/browse/$FILE_PATH?at=$BRANCH",
+    url_template = "https://bitbucket.org/$ORG/$REPO/src/$BRANCH/$FILE_PATH",
     pattern = "git@bitbucket.-:(.-)/(.-)%.git",
+    line_preamble = "lines-",
     line_prefix = "",
+    lines_separator = ":",
   },
 }
 
@@ -63,12 +67,19 @@ M.copy_absolute_local_path = function()
   copy_to_clipboard(absolute_path)
 end
 
-M.copy_remote_path = function()
+M.copy_remote_path = function(use_default_branch)
   local file_path = get_buf_path()
   local mode = vim.fn.mode()
 
   local remote_url = cmd.run_shell_cmd({ "git", "remote", "get-url", "origin" })
-  local current_branch = cmd.run_shell_cmd({ "git", "symbolic-ref", "--short", "HEAD" })
+
+  local current_branch
+  if use_default_branch then
+    local default_branch_ref = cmd.run_shell_cmd({ "git", "rev-parse", "--abbrev-ref", "origin/HEAD" })
+    current_branch = default_branch_ref:gsub("^origin/", "")
+  else
+    current_branch = cmd.run_shell_cmd({ "git", "symbolic-ref", "--short", "HEAD" })
+  end
 
   ---@type repo_types
   local repo_type
@@ -95,9 +106,9 @@ M.copy_remote_path = function()
 
   if mode == "v" or mode == "V" then
     local start_line, end_line = vim.fn.getpos("v")[2], vim.fn.getpos(".")[2]
-    url = url .. "#" .. remote.line_prefix .. start_line
+    url = url .. "#" .. remote.line_preamble .. remote.line_prefix .. start_line
     if start_line ~= end_line then
-      url = url .. "-" .. remote.line_prefix .. end_line
+      url = url .. remote.lines_separator .. remote.line_prefix .. end_line
     end
   end
 
