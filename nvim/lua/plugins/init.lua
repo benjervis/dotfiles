@@ -4,6 +4,22 @@ return {
   "nvim-tree/nvim-web-devicons",
   "sindrets/diffview.nvim",
   "kevinhwang91/nvim-hlslens",
+  "github/copilot.vim",
+  -- {
+  --   "nvim-neotest/neotest",
+  --   dependencies = {
+  --     "nvim-neotest/neotest-jest",
+  --   },
+  --   config = function()
+  --     require("neotest").setup({
+  --       adapters = {
+  --         require("neotest-jest")({
+  --           jestCommand = "yarn test --",
+  --         }),
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "petertriho/nvim-scrollbar",
     opts = true,
@@ -117,6 +133,9 @@ return {
             return string.find(ctx.filename, "node_modules", 1, true) == nil
           end,
         },
+        shfmt = {
+          prepend_args = { "--indent", "2", "--case-indent", "--binary-next-line" },
+        },
       },
     },
   },
@@ -146,6 +165,15 @@ return {
             }
           end
         end,
+      },
+    },
+  },
+  {
+    "echasnovski/mini.files",
+    opts = {
+      mappings = {
+        -- Map mini files synchronize to Ctrl-s
+        synchronize = "<C-s>",
       },
     },
   },

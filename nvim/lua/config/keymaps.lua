@@ -48,11 +48,3 @@ wk.add({
   end,
   desc = "Find and replace (package)",
 })
-
-wk.add({
-  "<leader>gg",
-  function()
-    LazyVim.lazygit({ size = { width = 1, height = 0.95 } })
-  end,
-  desc = "Lazygit (Root Dir)",
-})
