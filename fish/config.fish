@@ -2,10 +2,10 @@
 # pyenv init - | source
 
 # pnpm
-set -gx PNPM_HOME ~/Library/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    fish_add_path -gP $PNPM_HOME
-end
+# set -gx PNPM_HOME ~/Library/pnpm
+# if not string match -q -- $PNPM_HOME $PATH
+#     fish_add_path -gP $PNPM_HOME
+# end
 # pnpm end
 
 if test -n "$(which zoxide)"
