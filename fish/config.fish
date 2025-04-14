@@ -89,6 +89,33 @@ function gcr
     git checkout $branch_name
 end
 
+function pr
+    set branch_name $argv[1]
+
+    if test -z $branch_name
+        set branch_name (current_git_branch)
+    end
+
+    set diff_url \
+        "https://bitbucket.org/atlassian/atlassian-frontend-monorepo" \
+        /pull-requests/new \
+        "?source=$branch_name"
+
+    open (string join '' $diff_url)
+end
+
+function guy
+    gu && i
+end
+
+function i
+    if pwd | string match -q -- "*/atlassian/afm/*"
+        afm install
+    else
+        yarn
+    end
+end
+
 set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
@@ -110,6 +137,7 @@ alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.
 
 alias grm="git rebase master -Xours"
 alias gcd="git checkout (default_branch)"
+alias gcb="git checkout -b"
 
 alias n="nvim"
 alias lg="lazygit"
@@ -118,5 +146,5 @@ alias lg="lazygit"
 alias gs="git status -uno"
 alias gc="git commit -m"
 
-fish_add_path -gP /usr/local/go/bin
-fish_add_path -gP ~/.local/bin
+# fish_add_path -gP /usr/local/go/bin
+# fish_add_path -gP ~/.local/bin
