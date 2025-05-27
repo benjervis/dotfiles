@@ -44,6 +44,14 @@ vim.g.rustaceanvim = {
           typeHints = { enable = false, hideClosureInitialization = false, hideNamedConstructor = false },
           unresolvedProcMacros = { enable = false },
         },
+        diagnostics = {
+          enable = true,
+          disabled = {
+            "unresolved-macro-call",
+            "unresolved-proc-macro",
+            "macro-error",
+          },
+        },
       },
     },
   },
