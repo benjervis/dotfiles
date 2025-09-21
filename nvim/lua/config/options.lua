@@ -49,6 +49,7 @@ vim.g.rustaceanvim = {
           disabled = {
             "unresolved-macro-call",
             "unresolved-proc-macro",
+            "proc-macro-disabled",
             "macro-error",
           },
         },
