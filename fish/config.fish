@@ -127,9 +127,6 @@ fish_add_path -gP "~/.yarn/bin"
 alias reload_fish="source ~/.config/fish/config.fish"
 
 alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-progress"
-alias parcel-link="~/github/parcel/packages/dev/parcel-link/bin.js"
-alias parcel-unlink="~/atlassian/atlaspack/packages/dev/parcel-link/bin.js unlink"
-alias parcel-query="~/github/parcel/packages/dev/query/src/bin.js"
 alias al="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js"
 alias au="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
 alias aq="~/atlassian/atlaspack/packages/dev/query/src/bin.js"
@@ -137,7 +134,10 @@ alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.
 
 alias grm="git rebase master -Xours"
 alias gcd="git checkout (default_branch)"
-alias gcb="git checkout -b"
+alias gnb="git checkout -b"
+
+alias yb="yarn build"
+alias ybn="yarn build-native"
 
 alias n="nvim"
 alias lg="lazygit"
@@ -145,6 +145,7 @@ alias lg="lazygit"
 # git commands
 alias gs="git status -uno"
 alias gc="git commit -m"
+alias gcn="git commit --no-verify -m"
 
 # fish_add_path -gP /usr/local/go/bin
 # fish_add_path -gP ~/.local/bin
