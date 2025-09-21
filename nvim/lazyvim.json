@@ -1,5 +1,6 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.lang.markdown",
@@ -10,7 +11,7 @@
   ],
   "install_version": 7,
   "news": {
-    "NEWS.md": "10960"
+    "NEWS.md": "11866"
   },
   "version": 8
 }
