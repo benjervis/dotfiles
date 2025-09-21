@@ -1,4 +1,6 @@
 function fish_prompt
+    set existing_status $status
+
     if test "$(uname)" = Darwin
         set bg_color green
     else
@@ -34,6 +36,18 @@ function fish_prompt
           " LUNK " \
           (set_color normal)
         )
+    end
+
+    set prompt_items $prompt_items (string join '' -- \
+    (set_color --background black) \
+    (set_color black) \
+    "茶" \
+    (set_color normal))
+
+    if test "$existing_status" -ne 0
+        set prompt_items $prompt_items (string join '' -- \
+        "⚠️" \
+        (set_color normal))
     end
 
     string join -n ' ' $prompt_items
