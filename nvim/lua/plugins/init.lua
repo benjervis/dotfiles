@@ -169,7 +169,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.files",
+    "nvim-mini/mini.files",
     opts = {
       mappings = {
         -- Map mini files synchronize to Ctrl-s
