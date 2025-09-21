@@ -48,6 +48,3 @@ require("lazy").setup({
     },
   },
 })
-
----@diagnostic disable-next-line: missing-fields
-require("lspconfig").flow.setup({})
