@@ -120,6 +120,9 @@ set -gx EDITOR /opt/homebrew/bin/nvim
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
 set -gx HOMEBREW_NO_ENV_HINTS true
+set -gx AFM_DIR ~/atlassian/afm
+set -gx CFE_SSR ~/atlassian/afm/confluence/next/packages/ssr-app/dist/ssr-app.js
+set -gx ATLASPACK_DEBUG_TOOLS "asset-file-names-in-output,simple-cli-reporter"
 
 # Add the location for globally installed yarn binaries
 fish_add_path -gP "~/.yarn/bin"
