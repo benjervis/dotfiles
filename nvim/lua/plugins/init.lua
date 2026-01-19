@@ -46,11 +46,6 @@ return {
     },
   },
   { "tpope/vim-surround", lazy = false },
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
   -- {
   --   "ms-jpq/chadtree",
   --   branch = "chad",
@@ -185,7 +180,7 @@ return {
         -- Width of non-focused window
         width_nofocus = 15,
         -- Width of preview window
-        width_preview = 100,
+        width_preview = 80,
       },
     },
   },
