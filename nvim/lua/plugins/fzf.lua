@@ -1,6 +1,5 @@
 local fzf_lua = require("fzf-lua")
 local actions = require("fzf-lua.actions")
-local native_profile = require("fzf-lua.profiles.fzf-native")
 local pickers = require("config.pickers")
 
 return {
@@ -53,6 +52,44 @@ return {
           })
         end,
         desc = "Find packages",
+      },
+      {
+        "<leader>fc",
+        function()
+          local cmd_string = string.format(
+            "rg \z
+              'name = \"(.+)\"' \z
+              -g \"Cargo.toml\" \z
+              -r '$1' \z
+              %s \z
+              --no-heading \z
+              --no-line-number \z
+              --trim \z
+              --max-count=1",
+            LazyVim.root.git()
+          )
+
+          require("fzf-lua").fzf_exec(cmd_string, {
+            fzf_opts = {
+              ["--delimiter"] = ":",
+              ["--with-nth"] = 2,
+            },
+            preview = {
+              type = "cmd",
+              fn = function(s)
+                local crate_path = string.gmatch(s[1], "(.+):(.+)")()
+                return "bat --color=always " .. crate_path
+              end,
+            },
+            actions = {
+              ["default"] = function(selection, opts)
+                local crate_path = string.gmatch(selection[1], "(.+):(.+)")()
+                require("fzf-lua.actions").file_switch_or_edit({ crate_path }, opts)
+              end,
+            },
+          })
+        end,
+        desc = "Find crates",
       },
     },
     opts = {
