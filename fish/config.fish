@@ -133,7 +133,7 @@ alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-pro
 alias al="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js"
 alias au="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
 alias aq="~/atlassian/atlaspack/packages/dev/query/src/bin.js"
-alias upgrade-parcel="~/atlassian/afm/afm-tools/src/packages/upgrade-parcel/run.sh"
+alias bump-atlaspack="~/atlassian/afm/afm-tools/src/packages/bump-atlaspack/run.sh"
 
 alias grm="git rebase master -Xours"
 alias gcd="git checkout (default_branch)"
@@ -143,12 +143,15 @@ alias yb="yarn build"
 alias ybn="yarn build-native"
 
 alias n="nvim"
-alias lg="lazygit"
+alias g="lazygit"
+alias r="acli rovodev"
 
 # git commands
 alias gs="git status -uno"
 alias gc="git commit -m"
 alias gcn="git commit --no-verify -m"
+
+alias ac="git add .changeset && git commit -m \"Add changeset\""
 
 # fish_add_path -gP /usr/local/go/bin
 # fish_add_path -gP ~/.local/bin
