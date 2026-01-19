@@ -6,18 +6,6 @@ vim.g.lazyvim_picker = "fzf"
 
 vim.g.root_spec = { { ".git", "lua" }, "lsp", "cwd" }
 
-vim.filetype.add({
-  pattern = {
-    -- ["^%.%w*rc%-?%w*$"] = "json5",
-    [".*"] = function(path)
-      vim.print("Path:", path)
-      if path:find("parcelrc", 1, true) ~= nil then
-        return "json5"
-      end
-    end,
-  },
-})
-
 vim.g.rustaceanvim = {
   server = {
     default_settings = {
