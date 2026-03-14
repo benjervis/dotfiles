@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Convert iTerm2 plist to XML before committing so diffs are readable.
+
+PLIST="iterm2/com.googlecode.iterm2.plist"
+
+if git diff --cached --name-only | grep -qF "$PLIST"; then
+  if file "$PLIST" | grep -q "binary"; then
+    echo "Converting $PLIST to XML..."
+    plutil -convert xml1 "$PLIST"
+    git add "$PLIST"
+  fi
+fi

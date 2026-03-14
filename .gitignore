@@ -3,7 +3,8 @@
 !/fish/
 !/nvim/
 !/tmux/
+!/iterm2/
 !/lazygit/
 !/bat/
 !/git/
-
+!/.githooks/
