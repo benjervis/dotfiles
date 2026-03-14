@@ -1,32 +1,26 @@
 git:
   autoFetch: false
   fetchAll: false
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 gui:
   nerdFontsVersion: "3"
   showFileIcons: true
   showDivergenceFromBaseBranch: onlyArrow
-
+promptToReturnFromSubprocess: false
 os:
   editPreset: nvim
-
 customCommands:
   - key: p
     command: >-
-      {{$branch := .CheckedOutBranch.Name}}
-      git fetch origin {{$branch}} --prune --prune-tags
-      && git rebase origin/{{$branch}} {{$branch}}
+      {{$branch := .CheckedOutBranch.Name}} git fetch origin {{$branch}} --prune --prune-tags && git rebase origin/{{$branch}} {{$branch}}
     context: global
     description: Fetch and update current branch
     loadingText: Updating checked out branch
   - key: p
     command: >-
-      {{$branch := .SelectedLocalBranch.Name}}
-      git fetch origin {{$branch}} --prune --prune-tags
-      && git rebase origin/{{$branch}} {{$branch}}
+      {{$branch := .SelectedLocalBranch.Name}} git fetch origin {{$branch}} --prune --prune-tags && git rebase origin/{{$branch}} {{$branch}}
     context: localBranches
     description: Fetch and update branch
     loadingText: Updating selected branch
