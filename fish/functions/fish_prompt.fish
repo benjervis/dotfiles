@@ -28,16 +28,6 @@ function fish_prompt
         (set_color normal))
     end
 
-    if is_parcel_lunk
-        set prompt_items $prompt_items (string join '' -- \
-          (set_color --background brblue) \
-          (set_color --bold) \
-          (set_color white) \
-          " LUNK " \
-          (set_color normal)
-        )
-    end
-
     set prompt_items $prompt_items (string join '' -- \
     (set_color --background black) \
     (set_color black) \

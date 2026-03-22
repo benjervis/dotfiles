@@ -37,10 +37,5 @@
   wrap-max-lines = 0
 [lfs]
 	concurrenttransfers = 1
-[maintenance]
-	repo = /Users/bjervis/atlassian/afm
-	repo = /Users/bjervis/atlassian/afm-worktree
 [branch]
 	sort = -committerdate
-[scalar]
-	repo = /Users/bjervis/atlassian/afm

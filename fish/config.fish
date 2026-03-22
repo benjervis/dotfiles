@@ -1,4 +1,6 @@
-# eval "$(/opt/homebrew/bin/brew shellenv)"
+if test (uname) = "Darwin"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
 # pyenv init - | source
 
 # pnpm
@@ -10,10 +12,6 @@
 
 if test -n "$(which zoxide)"
     zoxide init fish --cmd cd | source
-end
-
-function is_parcel_lunk
-    return (exists-up ".atlaspack-link" ".git")
 end
 
 function current_git_branch
@@ -101,7 +99,11 @@ function pr
         /pull-requests/new \
         "?source=$branch_name"
 
-    open (string join '' $diff_url)
+    if test (uname) = "Darwin"
+        open (string join '' $diff_url)
+    else
+        xdg-open (string join '' $diff_url)
+    end
 end
 
 function guy
@@ -116,10 +118,14 @@ function i
     end
 end
 
-set -gx EDITOR /opt/homebrew/bin/nvim
+if test (uname) = "Darwin"
+    set -gx EDITOR /opt/homebrew/bin/nvim
+    set -gx HOMEBREW_NO_ENV_HINTS true
+else
+    set -gx EDITOR nvim
+end
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
-set -gx HOMEBREW_NO_ENV_HINTS true
 set -gx AFM_DIR ~/atlassian/afm
 set -gx CFE_SSR ~/atlassian/afm/confluence/next/packages/ssr-app/dist/ssr-app.js
 set -gx ATLASPACK_DEBUG_TOOLS "asset-file-names-in-output,simple-cli-reporter"
@@ -144,6 +150,7 @@ alias ybn="yarn build-native"
 
 alias n="nvim"
 alias g="lazygit"
+alias l="lazygit"
 alias r="acli rovodev"
 
 # git commands
