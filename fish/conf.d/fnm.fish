@@ -1,1 +1,1 @@
-fnm env --use-on-cd --version-file-strategy recursive --corepack-enabled --resolve-engines | source
+~/.cargo/bin/fnm env --use-on-cd --version-file-strategy recursive --corepack-enabled --resolve-engines | source
