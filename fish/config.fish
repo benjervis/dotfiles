@@ -160,5 +160,5 @@ alias gcn="git commit --no-verify -m"
 
 alias ac="git add .changeset && git commit -m \"Add changeset\""
 
-# fish_add_path -gP /usr/local/go/bin
+fish_add_path -gP ~/.cargo/bin
 fish_add_path -gP ~/.local/bin
