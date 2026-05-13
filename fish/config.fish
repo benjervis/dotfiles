@@ -115,14 +115,6 @@ function guy
     gu && i
 end
 
-function i
-    if pwd | string match -q -- "*/atlassian/afm/*"
-        afm install
-    else
-        yarn
-    end
-end
-
 if test (uname) = Darwin
     set -gx EDITOR /opt/homebrew/bin/nvim
     set -gx HOMEBREW_NO_ENV_HINTS true
@@ -131,31 +123,22 @@ else
 end
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow'
-set -gx AFM_DIR ~/atlassian/afm
-set -gx CFE_SSR ~/atlassian/afm/confluence/next/packages/ssr-app/dist/ssr-app.js
-set -gx ATLASPACK_DEBUG_TOOLS "asset-file-names-in-output,simple-cli-reporter"
 
 # Add the location for globally installed yarn binaries
 fish_add_path -gP "~/.yarn/bin"
 
 alias reload_fish="source ~/.config/fish/config.fish"
 
-alias al="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js"
-alias au="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
-alias aq="~/atlassian/atlaspack/packages/dev/query/src/bin.js"
-alias bump-atlaspack="~/atlassian/afm/afm-tools/src/packages/bump-atlaspack/run.sh"
-
 alias grm="git rebase master -Xours"
 alias gcd="git checkout (default_branch)"
 alias gnb="git checkout -b"
 
-alias yb="yarn build"
-alias ybn="yarn build-native"
+alias i="yarn install"
 
 alias n="nvim"
 alias g="lazygit"
 alias l="lazygit"
-alias r="acli rovodev"
+alias d="devin"
 
 # git commands
 alias gs="git status"
