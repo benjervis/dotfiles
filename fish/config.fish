@@ -1,4 +1,4 @@
-if test (uname) = "Darwin"
+if test (uname) = Darwin
     eval "$(/opt/homebrew/bin/brew shellenv)"
 end
 # pyenv init - | source
@@ -9,6 +9,10 @@ end
 #     fish_add_path -gP $PNPM_HOME
 # end
 # pnpm end
+
+fish_add_path -gP ~/.cargo/bin
+fish_add_path -gP ~/.local/bin
+fish_add_path -gP ~/node-global-installs/bin
 
 if test -n "$(which zoxide)"
     zoxide init fish --cmd cd | source
@@ -94,15 +98,16 @@ function pr
         set branch_name (current_git_branch)
     end
 
-    set diff_url \
-        "https://bitbucket.org/atlassian/atlassian-frontend-monorepo" \
-        /pull-requests/new \
-        "?source=$branch_name"
+    set origin_url (git remote get-url origin)
+    set repo_path (string replace -r '^(?:git@github\.com:|https://github\.com/)([^/]+/[^/]+?)(?:\.git)?$' '$1' $origin_url)
+    set default_branch (git symbolic-ref --short refs/remotes/origin/HEAD | string replace 'origin/' '')
 
-    if test (uname) = "Darwin"
-        open (string join '' $diff_url)
+    set diff_url "https://github.com/$repo_path/compare/$default_branch...$branch_name?expand=1"
+
+    if test (uname) = Darwin
+        open $diff_url
     else
-        xdg-open (string join '' $diff_url)
+        xdg-open $diff_url
     end
 end
 
@@ -118,7 +123,7 @@ function i
     end
 end
 
-if test (uname) = "Darwin"
+if test (uname) = Darwin
     set -gx EDITOR /opt/homebrew/bin/nvim
     set -gx HOMEBREW_NO_ENV_HINTS true
 else
@@ -154,11 +159,19 @@ alias l="lazygit"
 alias r="acli rovodev"
 
 # git commands
-alias gs="git status -uno"
+alias gs="git status"
 alias gc="git commit -m"
 alias gcn="git commit --no-verify -m"
 
 alias ac="git add .changeset && git commit -m \"Add changeset\""
 
-fish_add_path -gP ~/.cargo/bin
-fish_add_path -gP ~/.local/bin
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# >>>> BEGIN MANAGED DEVIN BLOCK >>>>
+# Add ~/.local/bin to PATH for devin
+if not contains $HOME/.local/bin $PATH
+    set -gx PATH $HOME/.local/bin $PATH
+end
+# <<<< END MANAGED DEVIN BLOCK <<<<
