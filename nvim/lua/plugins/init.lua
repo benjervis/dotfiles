@@ -33,6 +33,13 @@ return {
     opts = {},
   },
   {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "lewis6991/async.nvim",
+    },
+    lazy = false,
+  },
+  {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
     opts = {
@@ -137,6 +144,16 @@ return {
             }
           end
         end,
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        ["markdownlint-cli2"] = {
+          args = { "--config", vim.fn.stdpath("config") .. "/.markdownlint-cli2.yaml", "--" },
+        },
       },
     },
   },
