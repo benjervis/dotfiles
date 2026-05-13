@@ -140,7 +140,6 @@ fish_add_path -gP "~/.yarn/bin"
 
 alias reload_fish="source ~/.config/fish/config.fish"
 
-alias tasky-dos="PARCEL_LOCAL_METRICS=true yarn build:local --fragments task-progress"
 alias al="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js"
 alias au="~/atlassian/atlaspack/packages/dev/atlaspack-link/bin.js unlink"
 alias aq="~/atlassian/atlaspack/packages/dev/query/src/bin.js"
